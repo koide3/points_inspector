@@ -41,6 +41,6 @@ docker run --rm --net host koide3/points_inspector:noetic rosrun points_inspecto
 ```
 
 ```bash
-# ROS2 humble
+# ROS2 humble (You may need some DDS configuration for ROS2 communication over docker)
 docker run --rm koide3/points_inspector:humble ros2 run points_inspector points_inspector_node -r points:=/os1_cloud_node1/points
 ```
