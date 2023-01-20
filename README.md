@@ -1,8 +1,19 @@
 # points_inspector
 
-An inspection tool to see field values of sensor_msgs/msg/PointCloud2 messages.
+An inspection tool to see field values of sensor_msgs/msg/PointCloud2 messages.  
 
-Example:
+[![Build](https://github.com/koide3/points_inspector/actions/workflows/build.yaml/badge.svg)](https://github.com/koide3/points_inspector/actions/workflows/build.yaml)
+
+Usage:
+```bash
+# ROS1
+rosrun points_inspector points_inspector_node points:=/os1_cloud_node1/points
+
+# ROS2
+ros2 run points_inspector points_inspector_node -r points:=/os1_cloud_node1/points
+```
+
+Output example:
 ```
 --- points ---
 frame_id:laser_data_frame
@@ -17,4 +28,19 @@ reflectivity   : datatype=UINT16 mean=5.4 first=0 last=0 median=0 min=0 max=184
 ring           : datatype=UINT8 mean=63.5 first=0 last=127 median=64 min=0 max=127
 ambient        : datatype=UINT16 mean=391.8 first=0 last=0 median=293 min=0 max=6605
 range          : datatype=UINT32 mean=6368.6 first=0 last=0 median=0 min=0 max=138284
+```
+
+## Docker images
+
+- [koide3/points_inspector:noetic ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/koide3/points_inspector/noetic)](https://hub.docker.com/repository/docker/koide3/points_inspector)
+- [koide3/points_inspector:humble ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/koide3/points_inspector/humble)](https://hub.docker.com/repository/docker/koide3/points_inspector)
+
+```bash
+# ROS1 noetic
+docker run --rm --net host koide3/points_inspector:noetic rosrun points_inspector points_inspector_node points:=/os1_cloud_node1/points
+```
+
+```bash
+# ROS2 humble
+docker run --rm koide3/points_inspector:humble ros2 run points_inspector points_inspector_node -r points:=/os1_cloud_node1/points
 ```
